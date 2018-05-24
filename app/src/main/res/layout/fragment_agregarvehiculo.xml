@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="75dp"
-            android:text=".:. VEHÍCULOS AGREGADOS .:.\n"
+            android:text=".:. Vehiculos Agregados .:.\n"
             android:gravity="center"
             android:textColor="#091F34"
             android:textSize="20sp"/>

@@ -76,7 +76,6 @@ public class IniciarSesion extends AppCompatActivity {
                                         datos[2] = jsonObject.getString("pass_user")+"";
                                         datos[3] = jsonObject.getString("success")+"";
                                         datos[4] = jsonObject.getString("unosolo_user");
-
                                         /* ACA ENVÍO DATOS A: ActivityPrincipalParticular que inicia con (MiCuentaFagment)*/
                                         Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
                                         Bundle bundle = new Bundle();
@@ -85,30 +84,12 @@ public class IniciarSesion extends AppCompatActivity {
                                         bundle.putString("pass", datos[2]);
                                         bundle.putString("tipo", datos[3]);
                                         bundle.putString("ident", datos[4]);
-                                        bundle.putString("que_user","1");
                                         intent.putExtras(bundle);
                                         startActivity(intent);
                                         /* ------------------------------------------------------------------------------ */
                                     }else if((""+jsonObject.getString("success")).equals("Usuario Agente")){
-                                        Toast.makeText(getApplicationContext(),"Bienvenido Usuario Agente",Toast.LENGTH_SHORT).show();
-                                        datos[0] = jsonObject.getString("nomb_user")+"";
-                                        datos[1] = jsonObject.getString("usua_user")+"";
-                                        datos[2] = jsonObject.getString("pass_user")+"";
-                                        datos[3] = jsonObject.getString("success")+"";
-                                        datos[4] = jsonObject.getString("unosolo_user");
-
-                                        /* ACA ENVÍO DATOS A: ActivityPrincipalParticular que inicia con (MiCuentaFagment)*/
-                                        Intent intent = new Intent(getApplicationContext(),ActivityPrincipalAgente.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putString("nomb", datos[0]);
-                                        bundle.putString("usua", datos[1]);
-                                        bundle.putString("pass", datos[2]);
-                                        bundle.putString("tipo", datos[3]);
-                                        bundle.putString("ident", datos[4]);
-                                        bundle.putString("que_user","2");
-                                        intent.putExtras(bundle);
-                                        startActivity(intent);
-                                        /* ------------------------------------------------------------------------------ */
+                                        Toast.makeText(getApplicationContext(),"Bienvenido usuario: agente, id:"+jsonObject.getString("id_user"),Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(),ActivityPrincipalAgente.class));
                                     }
                                 }else {
                                     Toast.makeText(getApplicationContext(), "Error:" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();

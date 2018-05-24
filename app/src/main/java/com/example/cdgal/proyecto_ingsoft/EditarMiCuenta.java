@@ -34,7 +34,7 @@ public class EditarMiCuenta extends AppCompatActivity {
 
     EditText nom, cor, num, con;
     String nombAntes, usuaAntes, passAntes, tipoAntes;
-    String nombDsps, usuaDsps, passDsps, tipoDsps, que_user;
+    String nombDsps, usuaDsps, passDsps, tipoDsps;
 
     Button actualizar;
     String id;
@@ -58,7 +58,6 @@ public class EditarMiCuenta extends AppCompatActivity {
         usuaAntes = bundle.getString("usua");
         passAntes = bundle.getString("pass");
         tipoAntes = bundle.getString("tipo");
-        que_user = bundle.getString("que_user");
         /* ------------------------------------ */
 
         actualizar = (Button)findViewById(R.id.editarCuenta);
@@ -86,33 +85,17 @@ public class EditarMiCuenta extends AppCompatActivity {
     }
 
     public void llamarMiCuenta(View view){
-        if (que_user.equals("1")){
-            /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
-            Bundle bundle = new Bundle();
-            Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
-            bundle.putString("ident", id);
-            bundle.putString("nomb", nombAntes);
-            bundle.putString("usua", usuaAntes);
-            bundle.putString("pass", tipoAntes);
-            bundle.putString("tipo", passAntes);
-            bundle.putString("que_user", que_user);
-            intent.putExtras(bundle);
-            startActivity(intent);
+        /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
+        Bundle bundle = new Bundle();
+        Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
+        bundle.putString("ident", id);
+        bundle.putString("nomb", nombAntes);
+        bundle.putString("usua", usuaAntes);
+        bundle.putString("pass", tipoAntes);
+        bundle.putString("tipo", passAntes);
+        intent.putExtras(bundle);
+        startActivity(intent);
         /* ------------------------------------ */
-        } else if (que_user.equals("2")){
-            /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
-            Bundle bundle = new Bundle();
-            Intent intent = new Intent(getApplicationContext(),ActivityPrincipalAgente.class);
-            bundle.putString("ident", id);
-            bundle.putString("nomb", nombAntes);
-            bundle.putString("usua", usuaAntes);
-            bundle.putString("pass", tipoAntes);
-            bundle.putString("tipo", passAntes);
-            bundle.putString("que_user", que_user);
-            intent.putExtras(bundle);
-            startActivity(intent);
-        /* ------------------------------------ */
-        }
     }
 
     @Override
@@ -248,31 +231,15 @@ public class EditarMiCuenta extends AppCompatActivity {
             tipoDsps = bundle.getString("tipo");
         }*/
 
-        if (que_user.equals("1")){
-            Toast.makeText(getApplicationContext(), "Particular", Toast.LENGTH_SHORT).show();
-            /*Bundle bundle = new Bundle();
-            Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
-            bundle.putString("ident", id);
-            bundle.putString("nomb", nombDsps);
-            bundle.putString("usua", usuaDsps);
-            bundle.putString("pass", passDsps);
-            bundle.putString("tipo", tipoDsps);
-            bundle.putString("que_user", que_user);
-            intent.putExtras(bundle);
-            startActivity(intent);*/
-        }else if(que_user.equals("2")){
-            Toast.makeText(getApplicationContext(), "Agente", Toast.LENGTH_SHORT).show();
-            /*Bundle bundle = new Bundle();
-            Intent intent = new Intent(getApplicationContext(),ActivityPrincipalAgente.class);
-            bundle.putString("ident", id);
-            bundle.putString("nomb", nombDsps);
-            bundle.putString("usua", usuaDsps);
-            bundle.putString("pass", passDsps);
-            bundle.putString("tipo", tipoDsps);
-            bundle.putString("que_user", que_user);
-            intent.putExtras(bundle);
-            startActivity(intent);*/
-        }
+        Bundle bundle = new Bundle();
+        Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
+        bundle.putString("ident", id);
+        bundle.putString("nomb", nombDsps);
+        bundle.putString("usua", usuaDsps);
+        bundle.putString("pass", passDsps);
+        bundle.putString("tipo", tipoDsps);
+        intent.putExtras(bundle);
+        startActivity(intent);
         /* ------------------------------------ */
     }
 }

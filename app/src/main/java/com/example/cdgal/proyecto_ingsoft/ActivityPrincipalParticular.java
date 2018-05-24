@@ -48,7 +48,6 @@ public class ActivityPrincipalParticular extends AppCompatActivity
         String usua = bundle.getString("usua");
         String pass = bundle.getString("pass");
         String tipo = bundle.getString("tipo");
-        String que_user = bundle.getString("que_user");
         /* ------------------------------------ */
 
         /* ACA ENVÍO DATOS A: MiCuentaFragment */
@@ -58,12 +57,11 @@ public class ActivityPrincipalParticular extends AppCompatActivity
         data.putString("usua", usua);
         data.putString("pass", pass);
         data.putString("tipo", tipo);
-        data.putString("que_user", que_user);
         AgregarVehiculoFragment agregarVehiculoFragment = new AgregarVehiculoFragment();
         MiCuentaFragment miCuentaFragment = new MiCuentaFragment();
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor2, miCuentaFragment).commit();
-        miCuentaFragment.setArguments(data);
+        fragmentManager.beginTransaction().replace(R.id.contenedor2, agregarVehiculoFragment).commit();
+        agregarVehiculoFragment.setArguments(data);
         /* ---------------------------------- */
     }
 
@@ -108,7 +106,6 @@ public class ActivityPrincipalParticular extends AppCompatActivity
         String usua123 = bundle.getString("usua");
         String pass123 = bundle.getString("pass");
         String tipo123 = bundle.getString("tipo");
-        String que_user = bundle.getString("que_user");
             /* ------------------------------------ */
 
         if (id == R.id.nav_addvehiculo) {
@@ -120,7 +117,6 @@ public class ActivityPrincipalParticular extends AppCompatActivity
             data.putString("usua", usua123);
             data.putString("pass", pass123);
             data.putString("tipo", tipo123);
-            data.putString("que_user", que_user);
             fragmentManager.beginTransaction().replace(R.id.contenedor2, agregarVehiculoFragment).commit();
             agregarVehiculoFragment.setArguments(data);
             /* ---------------------------------- */
@@ -129,7 +125,7 @@ public class ActivityPrincipalParticular extends AppCompatActivity
         } else if (id == R.id.nav_costoMultas) {
             fragmentManager.beginTransaction().replace(R.id.contenedor2, new CostMultFragment()).commit();
         } else if (id == R.id.nav_info) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor2, new InfoFragment()).commit();
+
         } else if (id == R.id.nav_miCuenta) {
             /* ACA ENVÍO DATOS A: MiCuenta */
             MiCuentaFragment miCuentaFragment = new MiCuentaFragment();
@@ -139,17 +135,11 @@ public class ActivityPrincipalParticular extends AppCompatActivity
             data.putString("usua", usua123);
             data.putString("pass", pass123);
             data.putString("tipo", tipo123);
-            data.putString("que_user", que_user);
             fragmentManager.beginTransaction().replace(R.id.contenedor2, miCuentaFragment).commit();
             miCuentaFragment.setArguments(data);
             /* ---------------------------------- */
         } else if (id == R.id.nav_X) {
-            try {
-                Thread.sleep(1000);
-                startActivity(new Intent(getApplicationContext(),IniciarSesion.class));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

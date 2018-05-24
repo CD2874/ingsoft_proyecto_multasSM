@@ -53,7 +53,9 @@
         <activity android:name=".NuevoVehiculo"/>
             <!--android:parentActivityName=".ActivityPrincipalAgente"/>-->
 
-        <activity android:name=".consultarVehiculo"></activity>
+        <activity
+            android:name=".consultarVehiculo"
+            android:parentActivityName=".ActivityPrincipalParticular"></activity>
     </application>
 
 </manifest>

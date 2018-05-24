@@ -32,7 +32,6 @@ public class CustomAdapterAgregarVehiculos extends ArrayAdapter<DataItemAgregarV
     }
 
     static  class DataHolder{
-        TextView pos;
         TextView ipos;
         TextView vehiculos;
         TextView placa;
@@ -49,7 +48,6 @@ public class CustomAdapterAgregarVehiculos extends ArrayAdapter<DataItemAgregarV
             convertView = inflater.inflate(layoutResourceId, parent,false);
 
             holder = new DataHolder();
-            holder.pos = (TextView)convertView.findViewById(R.id.pos);
             holder.ipos = (TextView)convertView.findViewById(R.id.idp);
             holder.vehiculos = (TextView)convertView.findViewById(R.id.vehiculo);
             holder.placa = (TextView)convertView.findViewById(R.id.placa);
@@ -61,7 +59,6 @@ public class CustomAdapterAgregarVehiculos extends ArrayAdapter<DataItemAgregarV
         }
 
         DataItemAgregarVehiculos dataItemAgregarVehiculos = data.get(position);
-        holder.pos.setText(dataItemAgregarVehiculos.pos);
         holder.ipos.setText(dataItemAgregarVehiculos.ip);
         holder.vehiculos.setText(dataItemAgregarVehiculos.v);
         holder.placa.setText(dataItemAgregarVehiculos.p);
