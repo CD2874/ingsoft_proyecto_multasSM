@@ -5,24 +5,23 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -30,72 +29,74 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class EditarMiCuenta extends AppCompatActivity {
+public class EditarVehiculo extends AppCompatActivity {
 
-    EditText nom, cor, num, con;
-    String nombAntes, usuaAntes, passAntes, tipoAntes;
-    String nombDsps, usuaDsps, passDsps, tipoDsps;
-
-    Button actualizar;
-    String id;
-
-    Boolean enviado;
+    String s1, s2, s3;
+    String id, nomb, usua, pass, tipo, posicion;
+    EditText alias, placa;
+    Spinner tipoPlaca;
 
     String IP = "https://andproyect123.000webhostapp.com";
-    String UPDATE = IP+"/actualizarUsuario.php";
+    String UPDATE = IP+"/actualizarMiVehiculo.php";
 
     obtenerWebService hiloconexion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_micuenta);
+        setContentView(R.layout.activity_editar_vehiculo);
 
         /* ACA RECIBO DATOS DE: MiCuentaFragment */
         Bundle bundle = getIntent().getExtras();
         id = bundle.getString("ident");
-        nombAntes = bundle.getString("nomb");
-        usuaAntes = bundle.getString("usua");
-        passAntes = bundle.getString("pass");
-        tipoAntes = bundle.getString("tipo");
+        nomb = bundle.getString("nomb");
+        usua = bundle.getString("usua");
+        pass = bundle.getString("pass");
+        tipo = bundle.getString("tipo");
         /* ------------------------------------ */
 
-        actualizar = (Button)findViewById(R.id.editarCuenta);
-        nom = (EditText)findViewById(R.id.nombre);
-        cor = (EditText)findViewById(R.id.correo);
-        num = (EditText)findViewById(R.id.numero);
-        con = (EditText)findViewById(R.id.password);
+        String [] valuesTipoLicencia = {"- # -","A", "B", "C", "M", "E"};
+        Spinner spinnerT = (Spinner) findViewById(R.id.tipo_placa);
+        ArrayAdapter<String> adapterT = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valuesTipoLicencia);
+        adapterT.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnerT.setAdapter(adapterT);
 
-        nom.setText(nombAntes);
-        cor.setText(usuaAntes);
-        num.setText(tipoAntes);
-        con.setText(passAntes);
+        alias = (EditText) findViewById(R.id.alias);
+        tipoPlaca = (Spinner) findViewById(R.id.tipo_placa) ;
+        placa = (EditText) findViewById(R.id.numero);
+
+        posicion = getIntent().getStringExtra("idPosicion");
+
+        alias.setText(getIntent().getStringExtra("Vehiculo"));
+
+        s1 = getIntent().getStringExtra("Placa");
+        s2 = s1.substring(0,1);
+        s3 = s1.substring(2);
+
+        if("A".equals(s2)){
+            tipoPlaca.setSelection(1);
+        } else if("B".equals(s2)){
+            tipoPlaca.setSelection(2);
+        } else if("C".equals(s2)){
+            tipoPlaca.setSelection(3);
+        } else if("M".equals(s2)){
+            tipoPlaca.setSelection(4);
+        } else if("E".equals(s2)){
+            tipoPlaca.setSelection(5);
+        }
+
+        placa.setText(s3);
     }
-
 
     public void llama(){
         hiloconexion = new obtenerWebService();
-        hiloconexion.execute(UPDATE,"4",id+"",nom.getText().toString(),cor.getText().toString()); //Parametro que recibe
+        hiloconexion.execute(UPDATE,"4",posicion+"",alias.getText().toString(),tipoPlaca.getSelectedItem().toString()+"-"+placa.getText().toString()); //Parametro que recibe
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         /*// Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);*/
         return true;
-    }
-
-    public void llamarMiCuenta(View view){
-        /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
-        Bundle bundle = new Bundle();
-        Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
-        bundle.putString("ident", id);
-        bundle.putString("nomb", nombAntes);
-        bundle.putString("usua", usuaAntes);
-        bundle.putString("pass", tipoAntes);
-        bundle.putString("tipo", passAntes);
-        intent.putExtras(bundle);
-        startActivity(intent);
-        /* ------------------------------------ */
     }
 
     @Override
@@ -162,8 +163,8 @@ public class EditarMiCuenta extends AppCompatActivity {
 
                     JSONObject jsonParam = new JSONObject();
                     jsonParam.put("id", strings[2]);
-                    jsonParam.put("nombre", strings[3]);
-                    jsonParam.put("usuario", strings[4]);
+                    jsonParam.put("alias", strings[3]);
+                    jsonParam.put("placa", strings[4]);
 
                     OutputStream os = urlConn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(
@@ -187,26 +188,24 @@ public class EditarMiCuenta extends AppCompatActivity {
 
                         String resultJson = respuestaJSON.getString("estado");
                         if (resultJson=="1"){
-                            devuelve = "Usuario actualizado correctamente.";
-                            //enviado = true;
+                            devuelve = "Vehiculo actualizado correctamente.";
                         }else if(resultJson=="2"){
-                            devuelve = "El usuario no pudo actualizarse.";
-                            //enviado = false;
+                            devuelve = "El vehiculo no pudo actualizarse.";
                         }
                     }else{
-                        devuelve = "Error de ingreso para actualizar usuario.";
+                        devuelve = "Error de ingreso para actualizar vehiculo.";
                         //enviado = false;
                     }
 
                 } catch (MalformedURLException e){
                     e.printStackTrace();
-                    devuelve = "Error técnico al actualizar usuario.";
+                    devuelve = "Error técnico al actualizar vehiculo.";
                 } catch (IOException e){
                     e.printStackTrace();
-                    devuelve = "Error técnico al actualizar usuario.";
+                    devuelve = "Error técnico al actualizar vehiculo.";
                 } catch (JSONException e){
                     e.printStackTrace();
-                    devuelve = "Error técnico al actualizar usuario.";
+                    devuelve = "Error técnico al actualizar vehiculo.";
                 }
                 return devuelve;
             }
@@ -215,29 +214,30 @@ public class EditarMiCuenta extends AppCompatActivity {
     }
 
     public void llamarEditar(View view){
-        /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
         llama();
 
-        //if (enviado==true){
-            nombDsps = nom.getText()+"";
-            usuaDsps = cor.getText()+"";
-            passDsps = con.getText()+"";
-            tipoDsps = num.getText()+"";
-        /*}else if (enviado==false){
-            Bundle bundle = getIntent().getExtras();
-            nombDsps = bundle.getString("nomb");
-            usuaDsps = bundle.getString("usua");
-            passDsps = bundle.getString("pass");
-            tipoDsps = bundle.getString("tipo");
-        }*/
-
+        /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
         Bundle bundle = new Bundle();
         Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
         bundle.putString("ident", id);
-        bundle.putString("nomb", nombDsps);
-        bundle.putString("usua", usuaDsps);
-        bundle.putString("pass", passDsps);
-        bundle.putString("tipo", tipoDsps);
+        bundle.putString("nomb", nomb);
+        bundle.putString("usua", usua);
+        bundle.putString("pass", pass);
+        bundle.putString("tipo", tipo);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        /* ------------------------------------ */
+    }
+
+    public void llamarAgregarVehiculo(View view){
+        /* ACA ENVÍO DATOS A: ActivityPrincipalPaticular */
+        Bundle bundle = new Bundle();
+        Intent intent = new Intent(this,ActivityPrincipalParticular.class);
+        bundle.putString("ident", id);
+        bundle.putString("nomb", nomb);
+        bundle.putString("usua", usua);
+        bundle.putString("pass", tipo);
+        bundle.putString("tipo", pass);
         intent.putExtras(bundle);
         startActivity(intent);
         /* ------------------------------------ */

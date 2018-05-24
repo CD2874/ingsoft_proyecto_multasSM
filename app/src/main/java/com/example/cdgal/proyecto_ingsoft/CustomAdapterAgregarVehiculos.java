@@ -2,12 +2,14 @@ package com.example.cdgal.proyecto_ingsoft;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -30,8 +32,10 @@ public class CustomAdapterAgregarVehiculos extends ArrayAdapter<DataItemAgregarV
     }
 
     static  class DataHolder{
-        TextView av;
-        TextView f;
+        TextView ipos;
+        TextView vehiculos;
+        TextView placa;
+        ImageView image;
     }
     @NonNull
     @Override
@@ -41,11 +45,13 @@ public class CustomAdapterAgregarVehiculos extends ArrayAdapter<DataItemAgregarV
         if (convertView==null){
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 
-            convertView = inflater.inflate(layoutResourceId, parent);
+            convertView = inflater.inflate(layoutResourceId, parent,false);
 
             holder = new DataHolder();
-            holder.av = (TextView)convertView.findViewById(R.id.vehiculosagregados);
-            holder.f = (TextView)convertView.findViewById(R.id.flecha);
+            holder.ipos = (TextView)convertView.findViewById(R.id.idp);
+            holder.vehiculos = (TextView)convertView.findViewById(R.id.vehiculo);
+            holder.placa = (TextView)convertView.findViewById(R.id.placa);
+            holder.image = (ImageView)convertView.findViewById(R.id.flecha);
 
             convertView.setTag(holder);
         }else{
@@ -53,8 +59,10 @@ public class CustomAdapterAgregarVehiculos extends ArrayAdapter<DataItemAgregarV
         }
 
         DataItemAgregarVehiculos dataItemAgregarVehiculos = data.get(position);
-        holder.av.setText(dataItemAgregarVehiculos.va);
-        holder.f.setText(dataItemAgregarVehiculos.f);
+        holder.ipos.setText(dataItemAgregarVehiculos.ip);
+        holder.vehiculos.setText(dataItemAgregarVehiculos.v);
+        holder.placa.setText(dataItemAgregarVehiculos.p);
+        holder.image.setImageResource(dataItemAgregarVehiculos.i);
 
         return convertView;
     }

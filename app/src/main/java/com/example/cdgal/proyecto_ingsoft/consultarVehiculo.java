@@ -1,19 +1,17 @@
 package com.example.cdgal.proyecto_ingsoft;
 
-
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,37 +19,80 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Tab_InfractoresFragment extends Fragment {
 
-    TextView resultado;
+public class consultarVehiculo extends AppCompatActivity {
+
+    String id,nomb, usua, pass, tipo, /*idV, vehiculo,*/ placa;
 
     //IP de mi Url:
     String IP = "https://andproyect123.000webhostapp.com";
     //Ruta de los Web Services:
-    String GET = IP+"/top.php";
+    String GET;
+
+    ArrayList<String> listContSM = new ArrayList<>();
+    ArrayList<String> listContSP = new ArrayList<>();
+
 
     obtenerWebService hiloconexion;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_consultar_vehiculo);
 
-        View view = inflater.inflate(R.layout.fragment_tab_infractores, container, false);
+        /* ACA RECIBO DATOS DE: MiCuentaFragment */
+        Bundle bundle = getIntent().getExtras();
+        id = bundle.getString("ident");
+        nomb = bundle.getString("nomb");
+        usua = bundle.getString("usua");
+        pass = bundle.getString("pass");
+        tipo = bundle.getString("tipo");
 
-        resultado = (TextView)view.findViewById(R.id.txtRes);
+        //idV = bundle.getString("idVehiculo");
+        //vehiculo = bundle.getString("vehiculo");
+        placa = bundle.getString("placa");
+        /* ------------------------------------ */
+
+        GET = IP+"/miVehiculoDescripcion.php?placavehiculo="+placa;
+
+        ExpandableListView expLV;
+        ExpLVAdapter adapter;
+        ArrayList<String> listCategorias;
+        Map<String, ArrayList<String>> mapChild;
+
+        expLV = (ExpandableListView) findViewById(R.id.expLV);
+        listCategorias = new ArrayList<>();
+        mapChild = new HashMap<>();
+
+        listCategorias.add("SAN MARCOS");
+        //listCategorias.add("SAN PEDRO SAC.");
+
+        //listContSM.add("Esto 1");
+        //listContSP.add("Descripcion numero 1... \f\f\f (Q.800.00)");
 
         llama();
 
-        return view;
+        mapChild.put(listCategorias.get(0), listContSM);
+        //mapChild.put(listCategorias.get(1), listContSP);
+
+        adapter = new ExpLVAdapter(this, listCategorias, mapChild);
+        expLV.setAdapter(adapter);
     }
 
     public void llama(){
@@ -91,8 +132,7 @@ public class Tab_InfractoresFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
-            resultado.setText(s);
-            //imageView.setImageBitmap(bitmap);
+            Toast.makeText(getApplicationContext(), s+"", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -133,27 +173,32 @@ public class Tab_InfractoresFragment extends Fragment {
                         String resultJSON = respuestaJSON.getString("estado");
 
                         if (resultJSON=="1"){
-                            JSONArray alumnosJSON = respuestaJSON.getJSONArray("datos_topvehiculo");
+                            JSONArray alumnosJSON = respuestaJSON.getJSONArray("vehiculos");
                             for (int i=0; i<alumnosJSON.length();i++){
-                                devuelve += alumnosJSON.getJSONObject(i).getString("no_placa")+
-                                        "                                                         "+
-                                        alumnosJSON.getJSONObject(i).getString("no_multa")+"\n\n";
+                                listContSM.add("LUGAR DE INFRACCIÓN: "+alumnosJSON.getJSONObject(i).getString("lugar_infraccion")+"\n"+
+                                        "FECHA DE INFRACCIÓN: "+alumnosJSON.getJSONObject(i).getString("fecha_infraccion")+"\n"+
+                                        "PLACA: "+alumnosJSON.getJSONObject(i).getString("no_placa")+"\n"+
+                                        "TIPO DE VEHÍCULO: "+alumnosJSON.getJSONObject(i).getString("tipo_vehiculo")+"\n"+
+                                        "MARCA: "+alumnosJSON.getJSONObject(i).getString("marca")+"\n"+
+                                        "COLOR: "+alumnosJSON.getJSONObject(i).getString("color"));
+                                devuelve = "Descripciones del Vehiculo";
                             }
                         }else if (resultJSON=="2"){
-                            devuelve = "... No hay datos vehículares.";
+                            devuelve = "No hay Vehículos.";
                         }
                     }
                 } catch (MalformedURLException e){
                     e.printStackTrace();
+                    devuelve = "Error técnico, listar vehículos.";
                 } catch (IOException e){
                     e.printStackTrace();
+                    devuelve = "Error técnico, listar vehículos.";
                 } catch (JSONException e){
                     e.printStackTrace();
+                    devuelve = "Error técnico, listar vehículos.";
                 }
-
                 return devuelve;
             }
-
             return null;
         }
     }

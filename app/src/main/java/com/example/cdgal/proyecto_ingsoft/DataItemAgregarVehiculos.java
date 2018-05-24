@@ -5,11 +5,15 @@ package com.example.cdgal.proyecto_ingsoft;
  */
 
 public class DataItemAgregarVehiculos {
-    String va;
-    char f;
+    String v;
+    String p;
+    String ip;
+    int i;
 
-    public DataItemAgregarVehiculos(String va, char f) {
-        this.va = va;
-        this.f = f;
+    public DataItemAgregarVehiculos(String v, String p, String ip, int i) {
+        this.v = v;
+        this.p = p;
+        this.ip = ip;
+        this.i = i;
     }
 }

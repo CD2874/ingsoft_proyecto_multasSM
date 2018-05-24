@@ -39,6 +39,9 @@ public class IniciarSesion extends AppCompatActivity {
     private static final String URL = "https://andproyect123.000webhostapp.com/user_control.php";
     private StringRequest request;
 
+    public String datos[] = new String[5];
+    public int iid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +71,24 @@ public class IniciarSesion extends AppCompatActivity {
                                 if(jsonObject.names().get(0).equals("success")){
                                     if((""+jsonObject.getString("success")).equals("Usuario Particular")){
                                         Toast.makeText(getApplicationContext(),"Bienvenido usuario: particular",Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(),ActivityPrincipalParticular.class));
+                                        datos[0] = jsonObject.getString("nomb_user")+"";
+                                        datos[1] = jsonObject.getString("usua_user")+"";
+                                        datos[2] = jsonObject.getString("pass_user")+"";
+                                        datos[3] = jsonObject.getString("success")+"";
+                                        datos[4] = jsonObject.getString("unosolo_user");
+                                        /* ACA ENVÍO DATOS A: ActivityPrincipalParticular que inicia con (MiCuentaFagment)*/
+                                        Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("nomb", datos[0]);
+                                        bundle.putString("usua", datos[1]);
+                                        bundle.putString("pass", datos[2]);
+                                        bundle.putString("tipo", datos[3]);
+                                        bundle.putString("ident", datos[4]);
+                                        intent.putExtras(bundle);
+                                        startActivity(intent);
+                                        /* ------------------------------------------------------------------------------ */
                                     }else if((""+jsonObject.getString("success")).equals("Usuario Agente")){
-                                        Toast.makeText(getApplicationContext(),"Bienvenido usuario: agente",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),"Bienvenido usuario: agente, id:"+jsonObject.getString("id_user"),Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(),ActivityPrincipalAgente.class));
                                     }
                                 }else {

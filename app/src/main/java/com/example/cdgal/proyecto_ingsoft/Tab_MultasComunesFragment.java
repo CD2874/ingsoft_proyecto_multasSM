@@ -20,7 +20,7 @@ public class Tab_MultasComunesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab_multascomunes, container, false);
 
         lstDataInfraCom = new ArrayList<>();
-        lstDataInfraCom.add(new DataItemMultCom("\n\n\n","\n\n\n"));
+        lstDataInfraCom.add(new DataItemMultCom("",""));
         lstDataInfraCom.add(new DataItemMultCom("Por quedarse sin combustible.","Q.200.00"));
         lstDataInfraCom.add(new DataItemMultCom("Por obstaculizar la vía sin contar con equipamiento básico.","Q.500.00"));
         lstDataInfraCom.add(new DataItemMultCom("Por estacionarse en doble fila.","Q.500.00"));

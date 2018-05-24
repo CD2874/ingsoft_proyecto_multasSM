@@ -3,6 +3,7 @@ package com.example.cdgal.proyecto_ingsoft;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,21 @@ public class MiCuentaFragment extends Fragment {
     Button b1;
     EditText nom, cor, num, con;
     private Button log_out;
+    String id, nomb, usua, pass, tipo;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_micuenta, container, false);
 
+        /* ACA RECIBO DATOS DE: ActivityPincipalParticular QUE VIENEN YA SEA DE: IniciaSesion Y/O EditarMiCuenta O EN: R.id.nav_miCuenta */
+        id =getArguments().getString("ident");
+        nomb =getArguments().getString("nomb");
+        usua =getArguments().getString("usua");
+        pass =getArguments().getString("pass");
+        tipo =getArguments().getString("tipo");
+        /* ------------------------------------ */
 
         nom = (EditText)v.findViewById(R.id.nombre);
         cor = (EditText)v.findViewById(R.id.correo);
@@ -36,9 +46,17 @@ public class MiCuentaFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MiCuentaFragment.this.getActivity(),"YOUR MESSAGE",Toast.LENGTH_LONG).show();
+                /* ACA ENVÍO DATOS A: EditaMiCuenta */
+                Bundle bundle = new Bundle();
                 Intent intent = new Intent(MiCuentaFragment.this.getActivity(), EditarMiCuenta.class);
+                bundle.putString("ident", id);
+                bundle.putString("nomb", nom.getText()+"");
+                bundle.putString("usua", cor.getText()+"");
+                bundle.putString("pass", con.getText()+"");
+                bundle.putString("tipo", num.getText()+"");
+                intent.putExtras(bundle);
                 startActivity(intent);
+                /* ------------------------------------ */
             }
         });
 
@@ -50,10 +68,16 @@ public class MiCuentaFragment extends Fragment {
             }
         });
 
+        nom.setText(nomb);
+        cor.setText(usua);
+        num.setText(tipo);
+        con.setText(pass);
+
         return v;
     }
 
     public void llamarEditarAgente(View view){
 
     }
+
 }

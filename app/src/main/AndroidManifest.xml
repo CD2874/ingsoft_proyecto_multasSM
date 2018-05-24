@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,41 +19,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".ActivityPrincipalAgente"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".IniciarSesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".AddParticular"
             android:parentActivityName=".IniciarSesion" />
+
         <activity
-            android:name=".EditarMiCuenta"
-            android:parentActivityName=".ActivityPrincipalAgente" />
-        <activity android:name=".Main2Activity">
+            android:name=".EditarMiCuenta"/>
+            <!--android:parentActivityName=".ActivityPrincipalAgente" />-->
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Main2Activity"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
         <activity
             android:name=".ActivityPrincipalParticular"
             android:label="@string/title_activity_principal_particular"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AgregarVehiculo" />
-        <activity android:name=".NuevoVehiculo"
-            android:parentActivityName=".AgregarVehiculo">
-        </activity>
+
+        <activity android:name=".EditarVehiculo"/>
+            <!--android:parentActivityName=".ActivityPrincipalAgente"/>-->
+
+        <activity android:name=".NuevoVehiculo"/>
+            <!--android:parentActivityName=".ActivityPrincipalAgente"/>-->
+
+        <activity
+            android:name=".consultarVehiculo"
+            android:parentActivityName=".ActivityPrincipalParticular"></activity>
     </application>
 
 </manifest>

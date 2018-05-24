@@ -22,7 +22,7 @@
                 android:layout_marginRight="50dp"
                 android:gravity="center"
                 android:paddingTop="120sp"
-                android:text="NUEVO VEHICULO"
+                android:text=".:. NUEVO VEHICULO .:."
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#091F34"/>
@@ -109,7 +109,8 @@
                     android:layout_weight="5"
                     android:background="@drawable/shadow_blue"
                     android:text="Guardar"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white"
+                    android:onClick="agregarNuevoVehiculo"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -119,14 +120,14 @@
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:id="@+id/cerrarsesion"
+                    android:id="@+id/cancelarVehiculo"
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_weight="6"
                     android:background="@drawable/shadow_blue"
                     android:text="Cancelar"
                     android:textColor="@android:color/white"
-                    android:onClick="llamarAgregarVehiculo"/>
+                    android:onClick="llamarAgregarVehiculo" />
 
             </LinearLayout>
 

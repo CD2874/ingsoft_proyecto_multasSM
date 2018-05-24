@@ -20,7 +20,7 @@ public class Tab_MultasPocasConocidasFragment extends Fragment {
         View view2 = inflater.inflate(R.layout.fragment_tab_multaspococonocidas, container, false);
 
         lstDataFaltCono = new ArrayList<>();
-        lstDataFaltCono.add(new DataItemMultCono("\n\n\n","\n\n\n"));
+        lstDataFaltCono.add(new DataItemMultCono("",""));
         lstDataFaltCono.add(new DataItemMultCono("Conducir con auriculares conectados o hablar por teléfono.","Q.100.00"));
         lstDataFaltCono.add(new DataItemMultCono("Bocinazos exagerados o innecesarios.","Q.200.00"));
         lstDataFaltCono.add(new DataItemMultCono("Estacionarse a más de 25cm. del bordillo.","Q.200.00"));

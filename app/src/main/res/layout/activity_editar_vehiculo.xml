@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.cdgal.proyecto_ingsoft.EditarMiCuenta"
+    tools:context="com.example.cdgal.proyecto_ingsoft.EditarVehiculo"
     android:background="@drawable/formulario" >
 
     <ScrollView
@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -22,10 +22,10 @@
                 android:layout_marginRight="50dp"
                 android:gravity="center"
                 android:paddingTop="120sp"
-                android:text="EDITAR MI CUENTA"
-                android:textColor="#091F34"
+                android:text=".:. EDITAR VEHICULO .:."
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#091F34"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -37,16 +37,14 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/nombre"
+                    android:id="@+id/alias"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:drawableRight="@drawable/ic_person_outline_black_24dp"
-                    android:hint="Nombre"
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
+                    android:drawableRight="@drawable/ic_contact_phone_black_24dp"
+                    android:hint="Alias"
                     android:textSize="14sp"
-                    android:text="Carlos Galvez"/>
+                    android:textColor="#091F34"/>
 
             </LinearLayout>
 
@@ -56,19 +54,21 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:baselineAligned="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
 
-                <EditText
-                    android:id="@+id/correo"
+                <Spinner
+                    android:id="@+id/tipo_placa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="12"
-                    android:drawableRight="@drawable/ic_email_black_24dp"
-                    android:hint="Correo Electrónico"
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
-                    android:textSize="14sp"
-                    android:text="cdg.light@gmail.com"/>
+                    android:layout_weight="3"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -78,43 +78,18 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:baselineAligned="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
 
                 <EditText
                     android:id="@+id/numero"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:drawableRight="@drawable/ic_contact_phone_black_24dp"
-                    android:hint="Telefono"
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
+                    android:drawableRight="@drawable/ic_keyboard_hide_black_24dp"
+                    android:hint="Número de placa"
                     android:textSize="14sp"
-                    android:text="+502-0000-0000"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:baselineAligned="true"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="12"
-                    android:drawableRight="@drawable/ic_lock_black_24dp"
-                    android:hint="Contraseña"
-                    android:textSize="14sp"
-                    android:inputType="textPassword"
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
-                    android:focusable="false"
-                    android:text="12345678"/>
+                    android:textColor="#091F34"/>
 
             </LinearLayout>
 
@@ -128,31 +103,31 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/regresarMiCuenta"
-                    android:layout_width="35dp"
-                    android:layout_height="45dp"
-                    android:layout_weight="5"
-                    android:background="@drawable/shadow_blue"
-                    android:text="Regresar"
-                    android:textColor="@android:color/white"
-                    android:onClick="llamarMiCuenta"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_weight="2"
-                    android:textColor="@android:color/white" />
-
-                <Button
                     android:id="@+id/editarCuenta"
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_weight="5"
                     android:background="@drawable/shadow_blue"
-                    android:text="Editar"
+                    android:text="Guardar"
                     android:textColor="@android:color/white"
                     android:onClick="llamarEditar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/cancelarVehiculo"
+                    android:layout_width="35dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="6"
+                    android:background="@drawable/shadow_blue"
+                    android:text="Cancelar"
+                    android:textColor="@android:color/white"
+                    android:onClick="llamarAgregarVehiculo" />
 
             </LinearLayout>
 
