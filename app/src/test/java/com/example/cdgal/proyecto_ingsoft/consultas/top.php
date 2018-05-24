@@ -1,19 +1,19 @@
 <?php
 /**
- * Obtiene todas las alumnos de la base de datos
+ * Obtiene todas los datos vehiuclo de la base de datos
  */
 
-require 'Alumnos.php';
+require 'datos.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    // Manejar petición GET
-    $alumnos = Alumnos::getAll();
+    // Manejar peticiÃ³n GET
+    $datos_topvehiculo = Datos::getTopVehiculos();
 
-    if ($alumnos) {
+    if ($datos_topvehiculo) {
 
         $datos["estado"] = 1;
-        $datos["alumnos"] = $alumnos;
+        $datos["datos_topvehiculo"] = $datos_topvehiculo;
 
         print json_encode($datos);
     } else {

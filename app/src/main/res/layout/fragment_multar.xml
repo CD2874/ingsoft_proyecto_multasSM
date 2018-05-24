@@ -27,7 +27,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <!--<TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:text="No. 0123958"
                 android:textColor="#13304C"
-                android:textSize="14sp" />
+                android:textSize="14sp" />-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -62,17 +62,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:hint="No. Placa"
+                    android:hint="No. Placa *"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:text="P-1"/>
 
                 <EditText
                     android:id="@+id/no_tarjetaCirculacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="7"
-                    android:hint="No. Tarjeta de Circulación"
+                    android:text="P-1"
+                    android:hint="No. Tarjeta de Circulación *"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -92,7 +94,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:hint="Tipo Vehículo"
+                    android:hint="Tipo Vehículo *"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -102,7 +105,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:hint="Marca"
+                    android:hint="Marca *"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -112,7 +116,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:hint="Color"
+                    android:hint="Color *"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -144,7 +149,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:hint="Nombres"
+                    android:hint="*Nombres"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -154,7 +160,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:hint="Apellidos"
+                    android:hint="*Apellidos"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -174,7 +181,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:hint="Conductor ausente"
+                    android:hint="*Conductor ausente"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -184,7 +192,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Género: "
+                    android:text="*Género: "
                     android:textColor="#091F34"
                     android:textSize="14sp" />
 
@@ -210,7 +218,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:hint="No. de Licencia:"
+                    android:hint="*No. de Licencia:"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -220,7 +229,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Tipo de Licencia: "
+                    android:text="*Tipo de Licencia: "
                     android:textColor="#091F34"
                     android:textSize="14sp" />
 
@@ -230,6 +239,38 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:baselineAligned="true"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/nodpi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:hint="*No. de DPI"
+                    android:text="P-1"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/domicilio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:hint="*Domicilio:"
+                    android:text="P-1"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -258,7 +299,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:hint="Lugar de la infracción"
+                    android:hint="*Lugar de la infracción"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -279,7 +321,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="center"
-                    android:hint="Fecha"
+                    android:hint="*Fecha"
+                    android:text="2001-01-01"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -307,7 +350,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="center"
-                    android:hint="Hora"
+                    android:hint="*Hora"
+                    android:text="01:01:01"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -357,25 +401,26 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/articulo1"
+                    android:id="@+id/articuloT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:hint="Ingrese artículo infrigido..."
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/monto1"
+                    android:id="@+id/montoT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:hint="Ingrese monto..."
+                    android:hint="Monto (Q.100.00)"
+                    android:text="100.00"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:inputType="numberDecimal"
-                    android:text="0.00"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -387,97 +432,14 @@
                 android:layout_marginRight="12dp"
                 android:baselineAligned="true"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="2. "
-                    android:textColor="#091F34"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/articulo2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:hint="Ingrese artículo infrigido..."
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/monto2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:hint="Ingrese monto..."
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
-                    android:inputType="numberDecimal"
-                    android:text="0.00"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:baselineAligned="true"
-                android:orientation="horizontal"
-                android:textSize="14sp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="3. "
-                    android:textColor="#091F34"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/articulo3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:hint="Ingrese artículo infrigido..."
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/monto3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:hint="Ingrese monto..."
-                    android:textColorHint="#607687"
-                    android:textColor="#091F34"
-                    android:inputType="numberDecimal"
-                    android:text="0.00"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:baselineAligned="true"
-                android:orientation="horizontal">
-
 
                 <EditText
                     android:id="@+id/baseLegal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
-                    android:hint="BASE LEGAL"
+                    android:hint="*BASE LEGAL"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -513,7 +475,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:hint="No. de Identificación"
+                    android:hint="*No. de Identificación"
+                    android:text="P-1"
                     android:textColorHint="#607687"
                     android:textColor="#091F34"
                     android:textSize="14sp" />
@@ -523,7 +486,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Firma negada: "
+                    android:text="*Firma negada: "
                     android:textColor="#091F34"
                     android:textSize="14sp" />
 
@@ -536,12 +499,54 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:baselineAligned="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="*Firmó Ag.: "
+                    android:textColor="#091F34"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/firAgente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="*Firmó Inf.: "
+                    android:textColor="#091F34"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/firParticular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
-                android:layout_marginTop="18sp"
+                android:layout_marginTop="30sp"
                 android:text="OBSERVACIONES"
                 android:textColor="#13304C"
                 android:textSize="16sp" />
@@ -560,6 +565,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
+                    android:text="P-1"
                     android:inputType="textMultiLine"
                     android:textColor="#091F34"
                     android:textSize="14sp" />

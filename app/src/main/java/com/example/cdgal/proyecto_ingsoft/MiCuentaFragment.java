@@ -15,7 +15,7 @@ public class MiCuentaFragment extends Fragment {
     Button b1;
     EditText nom, cor, num, con;
     private Button log_out;
-    String id, nomb, usua, pass, tipo;
+    String id, nomb, usua, pass, tipo, que_user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +29,7 @@ public class MiCuentaFragment extends Fragment {
         usua =getArguments().getString("usua");
         pass =getArguments().getString("pass");
         tipo =getArguments().getString("tipo");
+        que_user =getArguments().getString("que_user");
         /* ------------------------------------ */
 
         nom = (EditText)v.findViewById(R.id.nombre);
@@ -54,6 +55,7 @@ public class MiCuentaFragment extends Fragment {
                 bundle.putString("usua", cor.getText()+"");
                 bundle.putString("pass", con.getText()+"");
                 bundle.putString("tipo", num.getText()+"");
+                bundle.putString("que_user", que_user);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 /* ------------------------------------ */
@@ -75,9 +77,4 @@ public class MiCuentaFragment extends Fragment {
 
         return v;
     }
-
-    public void llamarEditarAgente(View view){
-
-    }
-
 }

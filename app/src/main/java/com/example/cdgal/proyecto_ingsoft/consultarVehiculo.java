@@ -1,6 +1,5 @@
 package com.example.cdgal.proyecto_ingsoft;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -52,7 +51,6 @@ public class consultarVehiculo extends AppCompatActivity {
 
     obtenerWebService hiloconexion;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +80,7 @@ public class consultarVehiculo extends AppCompatActivity {
         listCategorias = new ArrayList<>();
         mapChild = new HashMap<>();
 
-        listCategorias.add("SAN MARCOS");
+        listCategorias.add("SAN MARCOS Y SAN PEDRO SAC. ↓↓");
         //listCategorias.add("SAN PEDRO SAC.");
 
         //listContSM.add("Esto 1");
@@ -95,6 +93,10 @@ public class consultarVehiculo extends AppCompatActivity {
 
         adapter = new ExpLVAdapter(this, listCategorias, mapChild);
         expLV.setAdapter(adapter);
+    }
+
+    public void llamarAgregarVehiculo(View view){
+
     }
 
     public void llama(){
@@ -151,7 +153,7 @@ public class consultarVehiculo extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String cadena = strings[0];
             URL url = null; //URL donde se obtiene información
-            String devuelve = "";
+            String devuelve = "No hay infracciones.";
 
             if (strings[1]=="1"){ //Consulta de todos los alumnos...
                 try{
@@ -177,16 +179,17 @@ public class consultarVehiculo extends AppCompatActivity {
                         if (resultJSON=="1"){
                             JSONArray alumnosJSON = respuestaJSON.getJSONArray("vehiculos");
                             for (int i=0; i<alumnosJSON.length();i++){
-                                listContSM.add("LUGAR DE INFRACCIÓN: "+alumnosJSON.getJSONObject(i).getString("lugar_infraccion")+"\n"+
-                                        "FECHA DE INFRACCIÓN: "+alumnosJSON.getJSONObject(i).getString("fecha_infraccion")+"\n"+
-                                        "PLACA: "+alumnosJSON.getJSONObject(i).getString("no_placa")+"\n"+
-                                        "TIPO DE VEHÍCULO: "+alumnosJSON.getJSONObject(i).getString("tipo_vehiculo")+"\n"+
-                                        "MARCA: "+alumnosJSON.getJSONObject(i).getString("marca")+"\n"+
-                                        "COLOR: "+alumnosJSON.getJSONObject(i).getString("color"));
+                                listContSM.add("                           INFRACCION NO. "+(i+1)+"\n\n"+
+                                        "Lugar: "+alumnosJSON.getJSONObject(i).getString("lugar_infraccion")+"\n"+
+                                        "Fecha: "+alumnosJSON.getJSONObject(i).getString("fecha_infraccion")+"\n"+
+                                        "Placa: "+alumnosJSON.getJSONObject(i).getString("no_placa")+"\n"+
+                                        "Tipo vehículo: "+alumnosJSON.getJSONObject(i).getString("tipo_vehiculo")+"\n"+
+                                        "Marca vehículo: "+alumnosJSON.getJSONObject(i).getString("marca")+"\n"+
+                                        "Color vehículo: "+alumnosJSON.getJSONObject(i).getString("color"));
                                 devuelve = "Descripciones del Vehiculo";
                             }
                         }else if (resultJSON=="2"){
-                            devuelve = "No hay Vehículos.";
+                            devuelve = "No hay infracciones.";
                         }
                     }
                 } catch (MalformedURLException e){

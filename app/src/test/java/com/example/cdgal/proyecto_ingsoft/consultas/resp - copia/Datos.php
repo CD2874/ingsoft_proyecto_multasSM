@@ -18,9 +18,9 @@ class Datos
      * @param $idAlumno Identificador del registro
      * @return array Datos del registro
      */
-    public static function getAll()
+    public static function getAlumno()
     {
-        $consulta = "SELECT * FROM datos_vehiculo;";
+        $consulta = "SELECT * FROM alumnos;";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -44,12 +44,9 @@ class Datos
     public static function getById($idAlumno)
     {
         // Consulta de la tabla Alumnos
-        $consulta = "SELECT idAlumno,
-                            nombre,
-                            direccion,
-                            rutaimagen
-                             FROM Alumnos
-                             WHERE idAlumno = ?";
+        $consulta = "SELECT nombre, apellido
+                             FROM alumnos
+                             WHERE id = ?;";
 
         try {
             // Preparar sentencia

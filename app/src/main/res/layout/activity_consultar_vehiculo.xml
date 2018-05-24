@@ -14,17 +14,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="25dp"
-            android:text=".:. MULTAS POR MUNICIPIOS .:.\n"
+            android:text=".:. INFRACCIONES REGISTRADAS .:.\n"
             android:gravity="center"
             android:textColor="#091F34"
             android:textSize="20sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"/>
-
-        <ListView
+        <ExpandableListView
             android:id="@+id/expLV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -16,8 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,22 +38,25 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static android.widget.AdapterView.*;
 
 
 public class AgregarVehiculoFragment extends Fragment {
 
-    String id, nomb, usua, pass, tipo;
-    ListView listView;
+    List<DataItemAgregarVehiculos> lsData;
+    CustomAdapterAgregarVehiculos adapterAgregarVehiculos;
+    String id, nomb, usua, pass, tipo, que_user;
     String idpos="";
+    int posicionado=0;
 
-    String[] valores;
-    ArrayList<String> listContSM = new ArrayList<>();
-    //ArrayList<String> valores = new ArrayList<>();
+    TextView resultado;
+
+    String idE;
+
+    String []alias;
+    String []placa;
+    String []pos;
+    String []posicionId;
 
     //IP de mi Url:
     String IP = "https://andproyect123.000webhostapp.com";
@@ -71,12 +72,14 @@ public class AgregarVehiculoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_agregarvehiculo, container, false);
+
         /* ACA RECIBO DATOS DE: ActivityPincipalParticular EN: nav_addvehiculo */
         id =getArguments().getString("ident");
         nomb =getArguments().getString("nomb");
         usua =getArguments().getString("usua");
         pass =getArguments().getString("pass");
         tipo =getArguments().getString("tipo");
+        que_user =getArguments().getString("que_user");
         /* ------------------------------------ */
 
         GET = IP+"/misVehiculos.php?idvehiculo="+id;
@@ -100,34 +103,21 @@ public class AgregarVehiculoFragment extends Fragment {
             }
         });
 
-        ExpandableListView expLV;
-        ExpLVAdapter2 adapter;
-        ArrayList<String> listCategorias;
-        Map<String, ArrayList<String>> mapChild;
-
-        expLV = (ExpandableListView)v.findViewById(R.id.expLV);
-        listCategorias = new ArrayList<>();
-        mapChild = new HashMap<>();
-
-        listCategorias.add("SAN MARCOS");
-        //listCategorias.add("SAN PEDRO SAC.");
-
-        //listContSM.add("Esto 1");
-        //listContSP.add("Descripcion numero 1... \f\f\f (Q.800.00)");
-
+        lsData = new ArrayList<>();
+        lsData.add(new DataItemAgregarVehiculos("","","Error: presione ", "Agregar Vehículo de nuevo", 0));
         llama();
 
-        mapChild.put(listCategorias.get(0), listContSM);
-        //mapChild.put(listCategorias.get(1), listContSP);
+        final ListView listView = (ListView)v.findViewById(R.id.listaMenu);
 
-        adapter = new ExpLVAdapter(this, listCategorias, mapChild);
-        expLV.setAdapter(adapter);
+        adapterAgregarVehiculos = new CustomAdapterAgregarVehiculos(this.getActivity(), R.layout.item_fil_agregar_vehiculos,lsData);
 
-        /*listView.setOnItemClickListener(new OnItemClickListener() {
+        listView.setAdapter(adapterAgregarVehiculos);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 /* ACA ENVÍO DATOS A: EditarVehiculo */
-                /*Bundle bundle = new Bundle();
+                Bundle bundle = new Bundle();
                 Intent intent = new Intent(getActivity(), consultarVehiculo.class);
                 bundle.putString("ident", id);
                 bundle.putString("nomb", nomb);
@@ -137,18 +127,22 @@ public class AgregarVehiculoFragment extends Fragment {
 
                 //bundle.putString("idVehiculo", lsData.get(position).ip);
                 //bundle.putString("vehiculo", lsData.get(position).v);
-                bundle.putString("placa", listContSM.get(position));
+                bundle.putString("placa", lsData.get(position).p);
 
                 intent.putExtras(bundle);
                 startActivity(intent);
                 /* ------------------------------------ */
-                /*Toast.makeText(getContext(),"Posicion: "+position, Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
         this.registerForContextMenu(listView);
 
         return v;
+    }
+
+    public void llama(){
+        hiloconexion = new obtenerWebService();
+        hiloconexion.execute(GET,"1");
     }
 
     @Override
@@ -175,16 +169,17 @@ public class AgregarVehiculoFragment extends Fragment {
                 bundle.putString("pass", pass);
                 bundle.putString("tipo", tipo);
 
-                /*bundle.putString("idPosicion", lsData.get(info.position).ip);
+                bundle.putString("idPosicion", lsData.get(info.position).ip);
                 bundle.putString("Vehiculo", lsData.get(info.position).v);
-                bundle.putString("Placa", lsData.get(info.position).p);*/
+                bundle.putString("Placa", lsData.get(info.position).p);
 
                 intent.putExtras(bundle);
                 startActivity(intent);
                 /* ------------------------------------ */
                 break;
             case R.id.eliminar:
-                idpos = "1";
+                idpos = lsData.get(info.position).ip;
+                posicionado = Integer.parseInt((lsData.get(info.position).pos)+"");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
                 builder.setMessage("¿Desea eliminar Vehículo?").
                         setPositiveButton("Sí", new DialogInterface.OnClickListener() {
@@ -192,6 +187,8 @@ public class AgregarVehiculoFragment extends Fragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 hiloconexion = new obtenerWebService();
                                 hiloconexion.execute(DELETE,"2",idpos+""); //Parametro que recibe
+                                lsData.remove(posicionado);
+                                adapterAgregarVehiculos.notifyDataSetChanged();
                             }
                         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -204,6 +201,12 @@ public class AgregarVehiculoFragment extends Fragment {
                 break;
         }
         return super.onContextItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        /*// Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);*/
+        return true;
     }
 
     @Override
@@ -221,10 +224,6 @@ public class AgregarVehiculoFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void llama(){
-        hiloconexion = new obtenerWebService();
-        hiloconexion.execute(GET,"1");
-    }
 
     public class obtenerWebService extends AsyncTask<String,Void,String> {
         Bitmap bitmap;
@@ -281,17 +280,18 @@ public class AgregarVehiculoFragment extends Fragment {
 
                         if (resultJSON=="1"){
                             JSONArray alumnosJSON = respuestaJSON.getJSONArray("vehiculos");
-                            //posicion = new String[alumnosJSON.length()+1];
-                            //alias = new String[alumnosJSON.length()+1];
-                            //placa = new String[alumnosJSON.length()+1];
-                            valores = new String[alumnosJSON.length()+1];
+                            pos = new String[alumnosJSON.length()+1];
+                            posicionId = new String[alumnosJSON.length()+1];
+                            alias = new String[alumnosJSON.length()+1];
+                            placa = new String[alumnosJSON.length()+1];
+
+                            lsData.clear();
                             for (int i=0; i<alumnosJSON.length();i++){
-                                //posicion[i] = alumnosJSON.getJSONObject(i).getString("id");
-                                //alias[i] = alumnosJSON.getJSONObject(i).getString("alias");
-                                //placa[i] = alumnosJSON.getJSONObject(i).getString("placa");
-                                //lsData.add(new DataItemAgregarVehiculos(alias[i]+"",placa[i]+"", posicion[i]+"", R.drawable.ic_keyboard_arrow_right_black_24dp));
-                                //listContSM.add(alumnosJSON.getJSONObject(i).getString("id"));
-                                valores[i] =alumnosJSON.getJSONObject(i).getString("id")+"";
+                                pos[i] = String.valueOf((i+1));
+                                posicionId[i] = alumnosJSON.getJSONObject(i).getString("id");
+                                alias[i] = alumnosJSON.getJSONObject(i).getString("alias");
+                                placa[i] = alumnosJSON.getJSONObject(i).getString("placa");
+                                lsData.add(new DataItemAgregarVehiculos(alias[i]+"",placa[i]+"", posicionId[i]+"", pos[i]+"", R.drawable.ic_keyboard_arrow_right_black_24dp));
                                 devuelve = "Mis Vehiculos";
                             }
                         }else if (resultJSON=="2"){

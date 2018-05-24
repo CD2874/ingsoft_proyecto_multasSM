@@ -1,0 +1,43 @@
+insert into datos_vehiculo values (1, 10, 'ABC-111', '11111111', 'Carro 1', 'Toyota 1', 'Negro 1');
+insert into datos_vehiculo values (2, 20, 'ABC-222', '22222222', 'Carro 2', 'Toyota 2', 'Negro 2');
+insert into datos_vehiculo values (3, 30, 'ABC-333', '22222222', 'Carro 3', 'Toyota 3', 'Negro 3');
+
+
+insert into datos_infractor values(1, 'Carlos1', 'Galvez1', 'No ausente', 'Masculino', 'Numero 1', 'Tipo A', 'DPI 1', 'domicilio 1',1);
+insert into datos_infractor values(2, 'Carlos2', 'Galvez2', 'Si ausente', 'Masculino', 'Numero 2', 'Tipo B', 'DPI 2', 'domicilio 2',2);
+insert into datos_infractor values(3, 'Carlos3', 'Galvez3', 'No ausente', 'Masculino', 'Numero 3', 'Tipo C', 'DPI 3', 'domicilio 3',2);
+insert into datos_infractor values(4, 'Carlos4', 'Galvez4', 'No ausente', 'Masculino', 'Numero 4', 'Tipo D', 'DPI 4', 'domicilio 4',3);
+insert into datos_infractor values(5, 'Carlos5', 'Galvez5', 'Si ausente', 'Masculino', 'Numero 5', 'Tipo E', 'DPI 5', 'domicilio 5',3);
+insert into datos_infractor values(6, 'Carlos6', 'Galvez6', 'No ausente', 'Masculino', 'Numero 6', 'Tipo F', 'DPI 6', 'domicilio 6',3);
+
+
+insert into datos_infraccion values(1,'Malacatan 1', '2018-01-01', '01:01:01', 1);
+insert into datos_infraccion values(2,'Malacatan 2', '2018-01-02', '02:02:02', 2);
+insert into datos_infraccion values(3,'Malacatan 3', '2018-01-03', '03:03:03', 2);
+insert into datos_infraccion values(4,'Malacatan 4', '2018-01-04', '04:04:04', 3);
+insert into datos_infraccion values(5,'Malacatan 5', '2018-01-05', '05:05:05', 3);
+insert into datos_infraccion values(6,'Malacatan 6', '2018-01-06', '06:06:06', 3);
+
+
+insert into articulo_infringido values(1,'Numero 1', 'Descripcion 1', 'Base Legal 1', '1000.00', 1, 1);
+insert into articulo_infringido values(2,'Numero 2', 'Descripcion 2', 'Base Legal 2', '2000.00', 2, 2);
+insert into articulo_infringido values(3,'Numero 3', 'Descripcion 3', 'Base Legal 3', '3000.00', 2, 2);
+insert into articulo_infringido values(4,'Numero 4', 'Descripcion 4', 'Base Legal 4', '4000.00', 3, 3);
+insert into articulo_infringido values(5,'Numero 5', 'Descripcion 5', 'Base Legal 5', '5000.00', 3, 3);
+insert into articulo_infringido values(6,'Numero 6', 'Descripcion 6', 'Base Legal 6', '6000.00', 3, 3);
+
+
+insert into datos_agente values(1, 'Numero de id 1', 1, 1, 0, 1, 1, 1);
+insert into datos_agente values(2, 'Numero de id 2', 1, 0, 1, 2, 2, 2);
+insert into datos_agente values(3, 'Numero de id 3', 1, 1, 0, 2, 2, 2);
+insert into datos_agente values(4, 'Numero de id 4', 1, 0, 1, 3, 3, 3);
+insert into datos_agente values(5, 'Numero de id 5', 1, 1, 0, 3, 3, 3);
+insert into datos_agente values(6, 'Numero de id 6', 1, 0, 1, 3, 3, 3);
+
+
+insert into observaciones values(1, 'Observacion 1', 1);
+insert into observaciones values(2, 'Observacion 2', 2);
+insert into observaciones values(3, 'Observacion 3', 2);
+insert into observaciones values(4, 'Observacion 4', 3);
+insert into observaciones values(5, 'Observacion 5', 3);
+insert into observaciones values(6, 'Observacion 6', 3);

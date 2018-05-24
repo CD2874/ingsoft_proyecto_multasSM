@@ -4,25 +4,25 @@
  * su identificador "idalumno"
  */
 
-require 'Alumnos.php';
+require 'datos.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    if (isset($_GET['idalumno'])) {
+    if (isset($_GET['placavehiculo'])) {
 
         // Obtener parámetro idalumno
-        $parametro = $_GET['idalumno'];
+        $parametro = $_GET['placavehiculo'];
 
         // Tratar retorno
-        $retorno = Alumnos::getById($parametro);
+        $retorno = Datos::getVehiculoDescripcion($parametro);
 
 
         if ($retorno) {
 
-            $alumno["estado"] = 1;		// cambio "1" a 1 porque no coge bien la cadena.
-            $alumno["alumno"] = $retorno;
+            $vehiculo["estado"] = 1;		// cambio "1" a 1 porque no coge bien la cadena.
+            $vehiculo["vehiculos"] = $retorno;
             // Enviar objeto json del alumno
-            print json_encode($alumno);
+            print json_encode($vehiculo);
         } else {
             // Enviar respuesta de error general
             print json_encode(
