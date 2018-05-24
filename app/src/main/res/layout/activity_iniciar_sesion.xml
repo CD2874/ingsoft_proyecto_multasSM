@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cdgal.proyecto_ingsoft.IniciarSesion">
+    tools:context="com.example.cdgal.proyecto_ingsoft.IniciarSesion"
+    android:background="@drawable/formlogin">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,14 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
-            android:background="@android:color/holo_blue_light"/>
+            android:background="#D4FA5D"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/white"/>
-    </LinearLayout>
+            android:background="#020F1B"/>
+    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
             android:text="INICIO DE SESIÓN"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textColor="@android:color/white"
+            android:textColor="#13304C"
             android:textSize="30dp"/>
     </LinearLayout>
 
@@ -97,12 +98,11 @@
             android:layout_width="220dp"
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
-            android:background="@drawable/shadow"
+            android:background="@drawable/shadow_green"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:text="Iniciar sesión"
             android:textColor="@android:color/white" />
-            <!--android:onClick="loginClicked"-->
 
         <TextView
             android:id="@+id/recuperar"
@@ -132,7 +132,7 @@
             android:layout_height="60dp"
             android:text="Crear usuario"
             android:textColor="@android:color/white"
-            android:background="@drawable/facebook"
+            android:background="@drawable/shadow_blue"
             android:layout_weight="1"
             android:onClick="llamarCrearUsuario" />
 

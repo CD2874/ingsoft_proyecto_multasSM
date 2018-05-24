@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cdgal.proyecto_ingsoft.ActivityPrincipal">
+    tools:context="com.example.cdgal.proyecto_ingsoft.ActivityPrincipal"
+    android:background="@drawable/formulario">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

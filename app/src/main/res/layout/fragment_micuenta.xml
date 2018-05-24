@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.cdgal.proyecto_ingsoft.MiCuentaFragment">
+    tools:context="com.example.cdgal.proyecto_ingsoft.MiCuentaFragment"
+    android:background="@drawable/formulario" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,8 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/formulario">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -24,7 +24,8 @@
                 android:paddingTop="120sp"
                 android:text="MI CUENTA"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#091F34"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -43,7 +44,8 @@
                     android:drawableRight="@drawable/ic_person_outline_black_24dp"
                     android:hint="Nombre"
                     android:textSize="14sp"
-                    android:text="Carlos Galvez"/>
+                    android:text="Carlos Galvez"
+                    android:textColor="#091F34"/>
 
             </LinearLayout>
 
@@ -63,8 +65,8 @@
                     android:drawableRight="@drawable/ic_email_black_24dp"
                     android:hint="Correo Electrónico"
                     android:textSize="14sp"
-                    android:editable="false"
-                    android:text="cdg.light@gmail.com"/>
+                    android:text="cdg.light@gmail.com"
+                    android:textColor="#091F34"/>
 
             </LinearLayout>
 
@@ -84,8 +86,8 @@
                     android:drawableRight="@drawable/ic_contact_phone_black_24dp"
                     android:hint="Telefono"
                     android:textSize="14sp"
-                    android:editable="false"
-                    android:text="+502-0000-0000"/>
+                    android:text="+502-0000-0000"
+                    android:textColor="#091F34"/>
 
             </LinearLayout>
 
@@ -106,9 +108,8 @@
                     android:hint="Contraseña"
                     android:textSize="14sp"
                     android:inputType="textPassword"
-                    android:editable="false"
-                    android:focusable="false"
-                    android:text="12345678"/>
+                    android:text="12345678"
+                    android:textColor="#091F34"/>
 
             </LinearLayout>
 
@@ -126,7 +127,7 @@
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_weight="5"
-                    android:background="@drawable/facebook"
+                    android:background="@drawable/shadow_blue"
                     android:text="Editar"
                     android:textColor="@android:color/white"
                     android:onClick="llamarEditarAgente"/>
@@ -134,7 +135,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="."
+                    android:text=""
                     android:layout_weight="1"
                     android:textColor="@android:color/white" />
 
@@ -143,7 +144,7 @@
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_weight="6"
-                    android:background="@drawable/facebook"
+                    android:background="@drawable/shadow_blue"
                     android:text="Cerrar sesión"
                     android:textColor="@android:color/white"
                     android:onClick="llamarEditarAgente"/>

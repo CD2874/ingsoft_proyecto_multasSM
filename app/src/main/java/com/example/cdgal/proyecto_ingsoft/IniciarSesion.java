@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,7 +50,6 @@ public class IniciarSesion extends AppCompatActivity {
     int time=10;
     Button eyeButton;
     Button loginButton;
-    Boolean usuarioEncontrado = false;
 
     private RequestQueue requestQueue;
     private static final String URL = "https://andproyect123.000webhostapp.com/user_control.php";
@@ -82,10 +82,14 @@ public class IniciarSesion extends AppCompatActivity {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if(jsonObject.names().get(0).equals("success")){
-                                    Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(),ActivityPrincipal.class));
+                                    Toast.makeText(getApplicationContext(),"Bienvenido usuario: "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
+                                    if((""+jsonObject.getString("success")).equals("particular")){
+                                        startActivity(new Intent(getApplicationContext(),ActivityPrincipal.class));
+                                    }else if((""+jsonObject.getString("success")).equals("agente")){
+                                        startActivity(new Intent(getApplicationContext(),EditarParticular.class));
+                                    }
                                 }else {
-                                    Toast.makeText(getApplicationContext(), "Error" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Error:" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (JSONException e) {
@@ -103,7 +107,7 @@ public class IniciarSesion extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             HashMap<String,String> hashMap = new HashMap<String, String>();
-                            hashMap.put("email",username.getText().toString());
+                            hashMap.put("usuario",username.getText().toString());
                             hashMap.put("password",password.getText().toString());
 
                             return hashMap;
@@ -125,20 +129,6 @@ public class IniciarSesion extends AppCompatActivity {
         Intent intent = new Intent(this, AddParticular.class);
         startActivity(intent);
     }
-
-    public void  lanzarMsjCorto2(){
-        Toast.makeText(this, "Bienvenido a Multas SM", Toast.LENGTH_SHORT).show();
-    }
-
-
-    /////////This Method Run When Login Button Clicked////////
-    /*public void loginClicked(View view){
-        if (validate()){
-            lanzarMsjCorto2();
-            Intent intent = new Intent(this, ActivityPrincipal.class);
-            startActivity(intent);
-        }
-    }*/
 
     //////////this will take care that input fields are not empty/////////////
     public boolean validate() {
@@ -186,20 +176,5 @@ public class IniciarSesion extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.setData(Uri.parse("http://www.facebook.com"));
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

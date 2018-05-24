@@ -17,7 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/itemmargin"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="#091F34"
+            android:textSize="15dp"
+            android:gravity="fill_horizontal" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -32,7 +35,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_margin="@dimen/itemmargin" />
+            android:layout_margin="@dimen/itemmargin"
+            android:textColor="#091F34"
+            android:textSize="15dp"
+            android:gravity="fill_horizontal" />
 
     </RelativeLayout>
 </LinearLayout>

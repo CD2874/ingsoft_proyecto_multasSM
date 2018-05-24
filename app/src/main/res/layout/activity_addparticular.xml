@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.cdgal.proyecto_ingsoft.AddParticular">
+    tools:context="com.example.cdgal.proyecto_ingsoft.AddParticular"
+    android:background="@drawable/formulario">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,8 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/formulario">
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="match_parent"
@@ -23,6 +23,7 @@
                 android:gravity="center"
                 android:paddingTop="120sp"
                 android:text="INGRESAR UN NUEVO USUARIO PARTICULAR"
+                android:textColor="#091F34"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -41,7 +42,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
                     android:hint="Nombre"
-                    android:textSize="14sp"/>
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
+                    android:textSize="16sp"/>
 
             </LinearLayout>
 
@@ -59,7 +62,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
                     android:hint="Correo Electrónico"
-                    android:textSize="14sp" />
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -79,6 +84,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Contraseña"
+                        android:textColorHint="#607687"
+                        android:textColor="#091F34"
                         android:inputType="textPassword"/>
                     <Button
                         android:id="@+id/eyeButton"
@@ -106,14 +113,14 @@
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_weight="5"
-                    android:background="@drawable/facebook"
+                    android:background="@drawable/shadow_blue"
                     android:text="Ingresar"
                     android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="."
+                    android:text=""
                     android:layout_weight="2"
                     android:textColor="@android:color/white" />
 
@@ -122,7 +129,7 @@
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_weight="5"
-                    android:background="@drawable/facebook"
+                    android:background="@drawable/shadow_blue"
                     android:text="Cancelar"
                     android:textColor="@android:color/white"
                     android:onClick="llamarIniciarSesion"/>

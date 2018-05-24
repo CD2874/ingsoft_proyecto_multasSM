@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.cdgal.proyecto_ingsoft.MultarFragment">
+    tools:context="com.example.cdgal.proyecto_ingsoft.MultarFragment"
+    android:background="@drawable/formulario" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
                 android:gravity="center"
                 android:paddingTop="70sp"
                 android:text="BOLETA DE AVISO REQUERIMIENTO\nDE PAGO Y CITACIÓN"
+                android:textColor="#13304C"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -32,7 +34,7 @@
                 android:layout_marginRight="12dp"
                 android:gravity="center"
                 android:text="No. 0123958"
-                android:textColor="@android:color/holo_red_light"
+                android:textColor="#13304C"
                 android:textSize="14sp" />
 
             <TextView
@@ -41,9 +43,10 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="14sp"
-                android:background="@android:color/darker_gray"
+                android:background="#13304C"
                 android:gravity="center"
                 android:text="DATOS DEL VEHÍCULO"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -60,6 +63,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:hint="No. Placa"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -68,6 +73,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="7"
                     android:hint="No. Tarjeta de Circulación"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -86,6 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:hint="Tipo Vehículo"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -94,6 +103,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:hint="Marca"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -102,6 +113,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:hint="Color"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -112,9 +125,10 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="14sp"
-                android:background="@android:color/darker_gray"
+                android:background="#13304C"
                 android:gravity="center"
                 android:text="DATOS DEL INFRACTOR"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -131,6 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:hint="Nombres"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -139,6 +155,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:hint="Apellidos"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -157,6 +175,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
                     android:hint="Conductor ausente"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <TextView
@@ -165,7 +185,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Género: "
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <Spinner
@@ -191,6 +211,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:hint="No. de Licencia:"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <TextView
@@ -199,7 +221,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="Tipo de Licencia: "
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <Spinner
@@ -217,9 +239,10 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="14sp"
-                android:background="@android:color/darker_gray"
+                android:background="#13304C"
                 android:gravity="center"
                 android:text="DATOS DE LA INFRACCIÓN"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -236,6 +259,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
                     android:hint="Lugar de la infracción"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -255,6 +280,8 @@
                     android:layout_weight="4"
                     android:gravity="center"
                     android:hint="Fecha"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <Button
@@ -262,7 +289,7 @@
                     android:layout_width="35dp"
                     android:layout_height="34dp"
                     android:layout_weight="1"
-                    android:background="@drawable/box"
+                    android:background="@drawable/shadow_blue"
                     android:text="..."
                     android:textColor="@android:color/white" />
 
@@ -270,7 +297,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="..."
+                    android:text=""
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
 
@@ -281,6 +308,8 @@
                     android:layout_weight="4"
                     android:gravity="center"
                     android:hint="Hora"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <Button
@@ -288,7 +317,7 @@
                     android:layout_width="35dp"
                     android:layout_height="34dp"
                     android:layout_weight="1"
-                    android:background="@drawable/box"
+                    android:background="@drawable/shadow_blue"
                     android:text="..."
                     android:textColor="@android:color/white" />
 
@@ -301,7 +330,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="14sp"
                 android:text="ARTICULO INFRIGIDO"
-                android:textColor="@android:color/black"
+                android:textColor="#13304C"
                 android:textSize="16sp" />
 
             <View
@@ -324,7 +353,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="1. "
-                    android:textColor="@android:color/black"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -333,6 +362,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:hint="Ingrese artículo infrigido..."
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -341,9 +372,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:hint="Ingrese monto..."
-                    android:textSize="14sp"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:inputType="numberDecimal"
-                    android:text="0.00" />
+                    android:text="0.00"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -361,7 +394,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="2. "
-                    android:textColor="@android:color/black"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -370,6 +403,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:hint="Ingrese artículo infrigido..."
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -378,9 +413,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:hint="Ingrese monto..."
-                    android:textSize="14sp"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:inputType="numberDecimal"
-                    android:text="0.00" />
+                    android:text="0.00"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -399,7 +436,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="3. "
-                    android:textColor="@android:color/black"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -408,6 +445,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:hint="Ingrese artículo infrigido..."
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <EditText
@@ -416,9 +455,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:hint="Ingrese monto..."
-                    android:textSize="14sp"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:inputType="numberDecimal"
-                    android:text="0.00" />
+                    android:text="0.00"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -437,6 +478,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
                     android:hint="BASE LEGAL"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -451,7 +494,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14sp"
-                android:background="@android:color/darker_gray"
+                android:background="#13304C"
+                android:textColor="#FFFFFF"
                 android:gravity="center"
                 android:text="DATOS DEL AGENTE"
                 android:textSize="16sp" />
@@ -470,6 +514,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:hint="No. de Identificación"
+                    android:textColorHint="#607687"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <TextView
@@ -478,7 +524,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="Firma negada: "
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
                 <Spinner
@@ -497,7 +543,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="18sp"
                 android:text="OBSERVACIONES"
-                android:textColor="@android:color/black"
+                android:textColor="#13304C"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -515,6 +561,7 @@
                     android:layout_weight="3"
                     android:ems="10"
                     android:inputType="textMultiLine"
+                    android:textColor="#091F34"
                     android:textSize="14sp" />
 
             </LinearLayout>
