@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/fondo"
+    tools:context="com.example.dell.restapp.MainActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/nProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del producto"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/cantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Cantidad"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="140dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/precio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Precio"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="210dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInputLayout">
+
+        <TextView
+            android:background="@drawable/borde"
+            android:text="0"
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_fi"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="entrada"
+        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:background="@drawable/box"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/textInputLayout"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btn_ff"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="vencimiento"
+        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:background="@drawable/box"
+        android:layout_above="@+id/btnguardar"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/btnguardar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/box"
+        android:text="Guardar"
+        android:drawableLeft="@drawable/ic_save_black_24dp"
+        android:layout_below="@+id/btn_fi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp" />
+</RelativeLayout>
