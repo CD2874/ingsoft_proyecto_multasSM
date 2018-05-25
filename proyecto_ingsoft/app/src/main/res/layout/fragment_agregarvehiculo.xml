@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="NOTA: En caso que no liste vehiculos:\nPress Agregar Vehiculo de nuevo para cargar página.\n"
+            android:text="NOTA: En caso que no liste vehiculos:\nPress Agregar Vehiculo de nuevo hasta cargar los datos vehículares.\n"
             android:gravity="center"
             android:textColor="#E50101"
             android:textSize="11sp"

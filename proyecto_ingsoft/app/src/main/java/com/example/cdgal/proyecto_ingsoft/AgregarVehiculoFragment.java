@@ -104,7 +104,7 @@ public class AgregarVehiculoFragment extends Fragment {
         });
 
         lsData = new ArrayList<>();
-        lsData.add(new DataItemAgregarVehiculos("","","Error: presione ", "Agregar Vehículo de nuevo", 0));
+        lsData.add(new DataItemAgregarVehiculos("ALIAS","PLACA","ID", "POS", 0));
         llama();
 
         final ListView listView = (ListView)v.findViewById(R.id.listaMenu);
@@ -255,7 +255,7 @@ public class AgregarVehiculoFragment extends Fragment {
         protected String doInBackground(String... strings) {
             String cadena = strings[0];
             URL url = null; //URL donde se obtiene información
-            String devuelve = "";
+            String devuelve = "No hay datos vehículares.";
 
             if (strings[1]=="1"){ //Consulta de todos los alumnos...
                 try{
@@ -285,7 +285,7 @@ public class AgregarVehiculoFragment extends Fragment {
                             alias = new String[alumnosJSON.length()+1];
                             placa = new String[alumnosJSON.length()+1];
 
-                            lsData.clear();
+                            //lsData.clear();
                             for (int i=0; i<alumnosJSON.length();i++){
                                 pos[i] = String.valueOf((i));
                                 posicionId[i] = alumnosJSON.getJSONObject(i).getString("id");

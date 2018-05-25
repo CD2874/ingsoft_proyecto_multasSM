@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -125,13 +126,12 @@ public class MultarFragment extends Fragment implements View.OnClickListener {
 
         guardar=(Button)v.findViewById(R.id.guardarMulta);
 
-        genero.setSelection(2);
-
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (validate()){
-                    //llama();
+                    llama();
+                    //Log.d("GENERO",genero.getSelectedItem().toString());
                 }
             }
         });
@@ -284,7 +284,7 @@ public class MultarFragment extends Fragment implements View.OnClickListener {
                         String resultJson = respuestaJSON.getString("estado");
                         if (resultJson=="1"){
                             devuelve = "Infracción insertada correctamente.";
-                            noPlaca.setText("");
+                            /*noPlaca.setText("");
                             noTCirculacion.setText("");
                             tipoV.setText("");
                             marca.setText("");
@@ -305,7 +305,7 @@ public class MultarFragment extends Fragment implements View.OnClickListener {
                             firmUA.setSelection(0);
                             firmUP.setSelection(0);
                             firmaN.setSelection(0);
-                            observaciones.setText("");
+                            observaciones.setText("");*/
                         }else if(resultJson=="2"){
                             devuelve = "La Infracción no pudo insertarse.";
                         }

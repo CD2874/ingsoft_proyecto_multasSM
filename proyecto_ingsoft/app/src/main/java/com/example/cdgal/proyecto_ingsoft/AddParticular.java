@@ -3,20 +3,19 @@ package com.example.cdgal.proyecto_ingsoft;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.InputType;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.cdgal.proyecto_ingsoft.IniciarSesion;
+import com.example.cdgal.proyecto_ingsoft.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,11 +32,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by cdgal on 26/03/2018.
- */
-
-public class AddAgenteFrgment extends Fragment {
+public class AddParticular extends AppCompatActivity {
 
     EditText password;
     Button eyeButton;
@@ -46,22 +41,23 @@ public class AddAgenteFrgment extends Fragment {
     Button agregar;
 
     String IP = "https://andproyect123.000webhostapp.com";
-    String UPDATE = IP+"/agregarUsuarioAgente.php";
+    String UPDATE = IP+"/agregarUsuarioParticular.php";
 
     obtenerWebService hiloconexion;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_addparticular);
+        setTitle(R.string.title_activity_crear_usuario);
 
-        View v = inflater.inflate(R.layout.fragment_addagente, container, false);
+        password=(EditText) findViewById(R.id.password);
+        eyeButton=(Button) findViewById(R.id.eyeButton);
+        agregar = (Button)findViewById(R.id.btnAddPar);
 
-        password=(EditText) v.findViewById(R.id.password);
-        eyeButton=(Button) v.findViewById(R.id.eyeButton);
-        agregar = (Button)v.findViewById(R.id.btnAddAg);
-
-        nomb = (EditText)v.findViewById(R.id.nombre);
-        usua = (EditText)v.findViewById(R.id.usuario);
-        pass = (EditText)v.findViewById(R.id.password);
+        nomb = (EditText)findViewById(R.id.nombre);
+        usua = (EditText)findViewById(R.id.usuario);
+        pass = (EditText)findViewById(R.id.password);
 
         hideAndShow();
 
@@ -71,13 +67,11 @@ public class AddAgenteFrgment extends Fragment {
                 llama();
             }
         });
-
-        return v;
     }
 
     public void llama(){
         hiloconexion = new obtenerWebService();
-        hiloconexion.execute(UPDATE,"3",nomb.getText().toString(),usua.getText().toString()+"",pass.getText().toString()+""); //Parametro que recibe
+        hiloconexion.execute(UPDATE,"3",nomb.getText().toString(),usua.getText().toString(),pass.getText().toString()); //Parametro que recibe
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,7 +106,7 @@ public class AddAgenteFrgment extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
-            Toast.makeText(getActivity(), s+"", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),s+"", Toast.LENGTH_LONG).show();
             //resultado.setText(s);
             //imageView.setImageBitmap(bitmap);
         }
@@ -131,7 +125,7 @@ public class AddAgenteFrgment extends Fragment {
         protected String doInBackground(String... strings) {
             String cadena = strings[0];
             URL url = null; //URL donde se obtiene información
-            String devuelve = "Error técnico al ingresar Usuario Agente";
+            String devuelve = "Error técnico al ingresar Usuario Particular";
 
             if (strings[1]=="3"){ //Insertar alumno...
                 try{
@@ -175,23 +169,20 @@ public class AddAgenteFrgment extends Fragment {
 
                         String resultJson = respuestaJSON.getString("estado");
                         if (resultJson=="1"){
-                            devuelve = "Usuario Agente insertado correctamente.";
-                            nomb.setText("");
-                            usua.setText("");
-                            pass.setText("");
+                            devuelve = "Usuario Particular insertado correctamente.";
                         }else if(resultJson=="2"){
-                            devuelve = "El Usuario Agente no pudo insertarse.";
+                            devuelve = "El Usuario Particular no pudo insertarse.";
                         }
                     }
                 } catch (MalformedURLException e){
                     e.printStackTrace();
-                    devuelve = "Error técnico al ingresar Usuario Agente";
+                    devuelve = "Error técnico al ingresar Usuario Particular";
                 } catch (IOException e){
                     e.printStackTrace();
-                    devuelve = "Error técnico al ingresar Usuario Agente";
+                    devuelve = "Error técnico al ingresar Usuario Particular";
                 } catch (JSONException e){
                     e.printStackTrace();
-                    devuelve = "Error técnico al ingresar Usuario Agente";
+                    devuelve = "Error técnico al ingresar Usuario Particular";
                 }
                 return devuelve;
             }
@@ -218,8 +209,8 @@ public class AddAgenteFrgment extends Fragment {
         );
     }
 
-    public void llamarMiCuenta(View view){
-        Intent intent = new Intent(getActivity(), MiCuentaFragment.class);
+    public void llamarIniciarSesion(View view){
+        Intent intent = new Intent(this, IniciarSesion.class);
         startActivity(intent);
     }
 }

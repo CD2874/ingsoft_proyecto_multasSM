@@ -249,8 +249,8 @@ public class EditarMiCuenta extends AppCompatActivity {
         }*/
 
         if (que_user.equals("1")){
-            Toast.makeText(getApplicationContext(), "Particular", Toast.LENGTH_SHORT).show();
-            /*Bundle bundle = new Bundle();
+            //Toast.makeText(getApplicationContext(), "Particular", Toast.LENGTH_SHORT).show();
+            Bundle bundle = new Bundle();
             Intent intent = new Intent(getApplicationContext(),ActivityPrincipalParticular.class);
             bundle.putString("ident", id);
             bundle.putString("nomb", nombDsps);
@@ -259,10 +259,10 @@ public class EditarMiCuenta extends AppCompatActivity {
             bundle.putString("tipo", tipoDsps);
             bundle.putString("que_user", que_user);
             intent.putExtras(bundle);
-            startActivity(intent);*/
+            startActivity(intent);
         }else if(que_user.equals("2")){
-            Toast.makeText(getApplicationContext(), "Agente", Toast.LENGTH_SHORT).show();
-            /*Bundle bundle = new Bundle();
+            //Toast.makeText(getApplicationContext(), "Agente", Toast.LENGTH_SHORT).show();
+            Bundle bundle = new Bundle();
             Intent intent = new Intent(getApplicationContext(),ActivityPrincipalAgente.class);
             bundle.putString("ident", id);
             bundle.putString("nomb", nombDsps);
@@ -271,7 +271,7 @@ public class EditarMiCuenta extends AppCompatActivity {
             bundle.putString("tipo", tipoDsps);
             bundle.putString("que_user", que_user);
             intent.putExtras(bundle);
-            startActivity(intent);*/
+            startActivity(intent);
         }
         /* ------------------------------------ */
     }

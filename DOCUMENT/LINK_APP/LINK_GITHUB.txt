@@ -1,0 +1,6 @@
+Link de GITHUB para poder descargar la aplicación android.
+Esta es una v.1.0 que se realizó como prueba, y se implemento como parte del proyecto.
+
+PARTE NO. 1:
+
+https://github.com/CD2874/ingsoft_proyecto_multasSM
